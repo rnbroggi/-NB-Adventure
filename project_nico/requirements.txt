@@ -5,6 +5,5 @@ django-crispy-forms==1.7.2
 django-easy-timezones==0.8.0
 ipaddress==1.0.16
 Pillow==5.4.1
-pkg-resources==0.0.0
 pygeoip==0.3.2
 pytz==2018.9
