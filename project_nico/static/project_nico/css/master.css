@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    color: white;
+    overflow: scroll;
+    margin: 0;
+}
+
+
+
+footer {
+    background-color: rgba(64, 64, 63, 0.2);
+    bottom: 0;
+    margin-top: 70px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+footer .col {
+    margin-left: 100px;
+}
+
+footer img {
+    margin-right: 150px;
+}
+
+footer a{
+    color: inherit;
+}
+
+
+.bg {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(http://78.media.tumblr.com/9951ca2e7e884a48ca5b5269f5514cd6/tumblr_nwjrkxWOcd1tslewgo1_500.gif);
+    background-size: 100%;
+    background-position: left bottom;
+}
+
+.sub-bg {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 25px;
+}
+
+.modal {
+    color: black;
+}
+
+.characters-class:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.dropdown-menu {
+    color: red;
+    background-color: darkgrey;
+}
+
+.textclass {
+    font-family: 'Almendra', serif;
+    color: orange;
+}
+
+.carousel-inner > .item {
+    height: 400px;
+}
+
+.ds3 {
+    color: gold;
+    font-size: 30px;
+    text-shadow: 2px 2px black;
+}
+
+.main-menu {
+    background-color: rgba(64, 64, 63, 0.2);
+}
+
+.welcome {
+    margin-bottom: 80px;
+
+}
+
+.worgen {
+    color: red;
+    font-size: 30px;
+    text-shadow: 2px 2px black;
+}
+
+.book {
+    color: antiquewhite;
+    font-size: 30px;
+    text-shadow: 2px 2px black;
+}
+
+.rowcontent {
+    border: 1px solid darkred;
+    padding-top: 80px;
+    font-size: 25px;
+    padding-bottom: 40px;
+}
+
+.full-width {
+    width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    left: 50%;
+}
+
+
+/************************************/
+/***********GATE ANIMATION***********/
+/************************************/
+.gate {
+    width: 300px;
+    margin: auto;
+    display: block;
+    position: relative;
+    top: 20px;
+    animation-name: gate-slam;
+    animation-duration: 1s;
+}
+
+.stonearchway {
+    width: 400px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: auto;
+    display: block;
+}
+
+
+@keyframes gate-slam {
+    0% {
+        top: -1000px;
+    }
+    100% {
+        top: 20px;
+    }
+}
+
+@keyframes text-appear {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.forbiddenmessage {
+    color: white;
+    font-family: arial;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    animation-name: text-appear;
+    animation-duration: 2.5s;
+}
+
+h1, h3 {
+    margin: 0;
+}

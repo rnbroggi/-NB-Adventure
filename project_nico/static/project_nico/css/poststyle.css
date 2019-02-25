@@ -1,0 +1,26 @@
+.post{
+    background-color: rgba(64, 64, 63, 0.5);
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.mycol{
+    border-right: 1px solid orange;
+}
+
+.post-text{
+    color: orangered;
+}
+
+.date{
+    font-size: 20px;
+    color: white;
+}
+
+.mymodal{
+    font-family: Arial;
+}
+
+.post img{
+    border: 3px solid black;
+}

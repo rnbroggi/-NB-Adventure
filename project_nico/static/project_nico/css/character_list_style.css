@@ -1,0 +1,26 @@
+.all-characters{
+    background-color: rgba(64, 64, 63, 0.5);
+    font-size: 20px;
+    padding-top: 25px;
+}
+
+.characters-list{
+    font-size: 20px;
+    /*padding-top: 20px;*/
+}
+
+.all-characters img{
+    position: relative;
+    right: -35px;
+    margin-left: -30px;
+    margin-bottom: 10px;
+}
+
+.chardata{
+    border-left: 1px solid orange;
+}
+
+.danger-button{
+    font-size: 20px;
+    color: white;
+}

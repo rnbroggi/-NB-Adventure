@@ -1,0 +1,101 @@
+.pirate {
+    color: firebrick;
+}
+
+.pirate img {
+    border: 5px solid firebrick;
+}
+
+.frost-mage {
+    color: deepskyblue;
+}
+
+.frost-mage img {
+    border: 5px solid deepskyblue;
+}
+
+.pyromancer {
+    color: darkorange;
+}
+
+.pyromancer img {
+    border: 5px solid darkorange;
+
+}
+
+.warrior {
+    color: sandybrown;
+}
+
+.warrior img {
+    border: 5px solid sandybrown;
+}
+
+.necromancer {
+    color: mediumpurple;
+}
+
+.necromancer img {
+    border: 5px solid mediumpurple;
+}
+
+.paladin {
+    color: pink;
+}
+
+.paladin img {
+    border: 5px solid pink;
+}
+
+.hunter {
+    color: darkseagreen;
+}
+
+.hunter img {
+    border: 5px solid darkseagreen;
+}
+
+.thief {
+    color: gold;
+}
+
+.thief img {
+    border: 5px solid gold;
+}
+
+.spellbar {
+    background-color: rgba(150, 64, 63, 0.4);
+    border: 3px solid grey;
+    padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+.combat-board{
+    background-color: rgba(150, 64, 63, 0.4);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: -20px;
+    border: 5px solid dimgrey;
+}
+
+.log ul .player-turn {
+    color: white;
+    background-color: rgba(0, 64, 255, 0.4);
+    text-align: center;
+    font-family: MedievalSharp;
+    font-size: 30px;
+    list-style-type: none;
+}
+
+.log ul .monster-turn {
+    color: red;
+    background-color: rgba(150, 64, 63, 0.4);
+    text-align: center;
+    font-family: MedievalSharp;
+    font-size: 30px;
+    list-style-type: none;
+}
+
+.rpg-head a{
+    color: inherit;
+}

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+    {% block profiledata %}
+
+        <div class="my-5 textclass">
+
+            <h1 class="mb-3">Profile Information</h1>
+            <h3>Username: {{ user.username }}</h3>
+            <h3>Email: {{ user.email }}</h3>
+
+        </div>
+
+
+    {% endblock %}
+
+    {% if character_list %}
+        <h1 class="mb-5 textclass text-center">My characters:</h1>
+
+        {% for char in character_list %}
+
+            {# Character image and name #}
+            <div class="row all-characters rounded textclass">
+                <div class="col-2 {{ char.char_class|slugify }}"><img src="{{ char.image.url }}"
+                                        alt="Character profile pic"
+                                        height="140px"
+                                        width="140px">
+                    <p class="text-center textclass">{{ char.name }}</p>
+                </div>
+
+                {# Character information #}
+                <div class="col-8 chardata">
+                    <p>{{ char.race }}</p>
+                    <p></p>
+                    <p class="{{ char.char_class|slugify }}">{{ char.char_class }}</p>
+                    {% if char.description %}
+                        <p>{{ char.description|linebreaks }}</p>
+                    {% else %}
+                        <p>(No description)</p>
+                    {% endif %}
+                </div>
+
+                {# Edit and Delete buttons #}
+                <div class="col-2 align-self-start">
+                    {# EDIT #}
+                    <a href="{% url 'characters:edit' pk=char.pk %}" class="btn btn-warning">Edit</a>
+
+                    {# DELETE #}
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#{{ char.name }}Modal">
+                        Delete
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="{{ char.name }}Modal" tabindex="-1" role="dialog"
+                         aria-labelledby="{{ char.name }}ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    {# Modal title #}
+                                    <h5 class="modal-title" id="{{ char.name }}ModalLabel">
+                                        Deleting {{ char.name }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                {# Modal body #}
+                                <div class="modal-body">
+                                    Are you sure you want to delete {{ char.name }}? All data and progress
+                                    will be
+                                    lost
+                                </div>
+
+                                {# Confirmation buttons #}
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <form action="{% url "characters:delete" pk=char.pk %}" method="post">
+                                        {% csrf_token %}
+
+                                        <button class="btn btn-danger">Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <hr>
+        {% endfor %}
+        </div>
+    {% else %}
+        <h2 class="textclass text-center">You have no characters yet. Go ahead and <a
+                href="{% url 'characters:create' %}">create a new one!</a>
+        </h2>
+
+        {% block gate %}
+        {% endblock %}
+    {% endif %}
+
+{% endblock %}

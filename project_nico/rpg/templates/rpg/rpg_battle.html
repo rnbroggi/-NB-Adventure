@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div id="app">
+
+        <div class="textclass mb-5 rpg-head">
+            <a href="{% url 'rpg:instructions' %}" target="_blank"><h1 class="mb-3">Instructions</h1></a>
+            <a href="{% url 'rpg:rpg' %}"><h1>Select other character</h1></a>
+        </div>
+
+        {# Portraits #}
+        <div class="row justify-content-between text-center rounded combat-board textclass  ">
+
+            {# Character info #}
+            <div class="col">
+
+                <div class="{{ character.char_class|slugify }}">
+
+                    <div>
+                        <img src="{{ character.image.url }}" class="mb-2"
+                             alt="Character profile pic"
+                             height="200px"
+                             width="200px">
+                        <h1 style="color: white">{{ character.name }}</h1>
+                        <h3>{{ character.char_class }}</h3><br>
+                    </div>
+
+
+                    {# Player Health bar #}
+                    <div class="mt-3" style="margin-left: 125px;  ">
+                        <div class="progress"
+                             style="width: 300px; height: 30px; background-color: rgba(64, 64, 63, 0.7);">
+                            <div class="progress-bar bg-danger" role="progressbar"
+                                 style="width: 100%; font-family: Arial;"
+                                 :style="{width: playerHealth + '%'}"
+                                 aria-valuenow="100"
+                                 aria-valuemin="0" aria-valuemax="100">HP: [[ playerHealth ]]
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col" style="border-left: 5px solid darkred">
+
+                {# Enemy info #}
+                <div style="margin-bottom: 50px">
+                    <img style="margin-bottom: 30px; border: 5px solid grey" src="{{ enemy.image.url }}"
+                         alt="Character profile pic"
+                         height="200px"
+                         width="200px">
+                    <h1 style="color: darkred;"><strong>{{ enemy.name }}</strong></h1>
+                </div>
+
+                {# Enemy Health bar #}
+                <div class="mt-3" style="margin-left: 125px;">
+                    <div class="progress" style="width: 300px; height: 30px; background-color: rgba(64, 64, 63, 0.7);"
+                    >
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%; font-family: Arial"
+                             :style="{width: monsterHealth + '%'}"
+                             aria-valuenow="100"
+                             aria-valuemin="0" aria-valuemax="100">HP: [[ monsterHealth ]]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {# Spells #}
+        <div class="row justify-content-center mb-5">
+            <div class="col-4 text-center mt-5">
+                <div class="spellbar" v-if="gameIsRunning">
+
+                    {# ATTACK #}
+                    <h1 class="mb-2 textclass"><span class="mr-5">Attack</span> <span class="ml-3">Heal</span></h1>
+                    <img @click="attack" class="mr-5 btn" data-toggle="tooltip" data-placement="bottom"
+                         title="{{ character.char_class.power_one.description }}"
+                         src="{{ character.char_class.power_one.image.url }}" style="border: transparent"
+                         alt="">
+
+
+                    {# HEAL #}
+                    <img @click="heal" class="ml-5 btn" data-toggle="tooltip" data-placement="bottom"
+                         title="{{ character.char_class.power_two.description }}"
+                         src="{{ character.char_class.power_two.image.url }}" style="border: transparent"
+                         alt="">
+
+                    {# Give up button #}
+                    <button class="btn btn-light mt-3" @click="giveUp">Give up</button>
+                </div>
+
+
+                {# Start new game button #}
+                <div v-else class="spellbar">
+                    <button class="btn btn-outline-success btn-lg mt-3 textclass" @click="startGame">
+                        Start new game
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="row log rounded mt-3" v-if="turns.length > 0">
+
+            <div class="col-12">
+                <h3 class="textclass text-center mb-3">Combat log</h3>
+                <ul>
+                    <li v-for="turn in turns"
+                        :class="{'player-turn': turn.isPlayer, 'monster-turn': !turn.isPlayer}">
+                        [[ turn.text ]]
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+    </div>
+
+
+    <script src="{% static 'project_nico/js/vue.js' %}"></script>
+    <script src="{% static 'project_nico/js/rpgbattle.js' %}"></script>
+{% endblock %}

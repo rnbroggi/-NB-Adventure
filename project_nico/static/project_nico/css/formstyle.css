@@ -1,0 +1,62 @@
+.formclass{
+    text-align: center;
+}
+
+.formclass input:focus{
+    font-family: Arial;
+}
+
+
+
+.centerbutton{
+    font-size: 20px;
+}
+
+.postclass{
+    background-color: rgba(64, 64, 63, 0.6);
+    font-family: 'MedievalSharp', cursive;
+    font-size: 35px;
+}
+
+.postclass select{
+    max-width: 200px;
+    background-color: rgba(64, 64, 63, 10);
+    margin-bottom: 5px;
+    color:white
+}
+
+.postclass select:focus{
+    max-width: 200px;
+    background-color: rgba(64, 64, 63, 10);
+    margin-bottom: 5px;
+    color:white
+}
+
+.postclass input:not([name='excludeme']){
+    background-color: rgba(64, 64, 63, 10);
+    color: white;
+}
+
+
+.postclass input[type=text]:focus{
+    background-color: rgba(64, 64, 63, 0.8);
+    color: white;
+ }
+
+
+.postclass textarea{
+     background-color: rgba(64, 64, 63, 10);
+    font-size: 30px;
+    margin-top: 5px;
+    color: white;
+ }
+
+
+.postclass textarea:focus{
+  background-color: rgba(64, 64, 63, 0.8);
+    color: white;
+}
+
+.characters-form textarea{
+    height: 200px;
+}

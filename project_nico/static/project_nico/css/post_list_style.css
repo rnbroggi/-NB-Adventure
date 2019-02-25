@@ -1,0 +1,9 @@
+.entry-sumary a{
+    color: inherit;
+}
+
+.entry-sumary .btn{
+    color: black;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 16px;
+}

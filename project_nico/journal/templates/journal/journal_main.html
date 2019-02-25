@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <div class="mt-5 textclass text-center">
+
+        <h1>Welcome to your adventure journal!</h1>
+
+        <div class="row mt-5">
+            <div class="col-6">
+
+                {# Check if list is empty #}
+                {% if character_list|length < 1 %}
+                    <a href="{% url 'characters:create' %}">
+                        <h1>Create new entry</h1>
+                        <h3>(You need to create a character first)</h3>
+                    </a>
+                {% else %}
+                    <a href="{% url 'journal:create' %}">
+                        <h1>Create new entry</h1>
+                    </a>
+                {% endif %}
+
+            </div>
+            <div class="col-6">
+                <h1><a href="{% url 'journal:entries' %}">View all your posts</a></h1>
+            </div>
+
+        </div>
+
+        {# Journal image #}
+        <div class="row">
+            <div class="col-12">
+                <img src="{% static 'project_nico/images/journal.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock %}

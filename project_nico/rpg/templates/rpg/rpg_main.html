@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    {% if character_list %}
+        <h1 class="textclass text-center mb-5">Select the character you want to play with</h1>
+
+        <div class="row mt-5 justify-content-center">
+            {% for character in character_list %}
+                <div class="col-4 textclass text-center mb-5">
+                    <a href="{% url 'rpg:battle' pk=character.pk %}" style="text-decoration: none;">
+                        <div class="{{ character.char_class|slugify }}">
+                            <img src="{{ character.image.url }}"
+                                 alt="Character profile pic"
+                                 height="200px"
+                                 width="200px">
+                            <h1 style="color: white">{{ character.name }}</h1>
+                            <h3>{{ character.char_class }}</h3>
+                        </div>
+                    </a>
+                </div>
+
+            {% endfor %}
+        </div>
+
+
+    {% else %}
+
+        <h1 class="textclass">It seems you don't have any characters yet. <a href="{% url 'characters:create' %}">Go
+            ahead and create one!</a></h1>
+
+    {% endif %}
+
+{% endblock %}

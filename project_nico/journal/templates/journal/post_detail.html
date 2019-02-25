@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <h1 class="mb-5 textclass">A tale of {{ post.character }}</h1>
+
+    {# Character image, name and class-race #}
+    <div class="row textclass post rounded">
+        <div class="col-3 mycol text-center">
+            <img src="{{ post.character.image.url }}" class="mb-3" alt="Character profile pic"
+                 height="200px"
+                 width="200px">
+
+            <h2>{{ post.character }}</h2>
+            <h5>{{ post.character.race }}, {{ post.character.char_class }}</h5>
+
+        </div>
+
+        <div class="col-9">
+
+            {# Title and buttons #}
+            <div class="row">
+                <div class="col-9">
+                    <h1 class="post-text">{{ post.title }} </h1>
+                </div>
+
+                {# Edit and delete buttons #}
+                <div class="col-3 text-right">
+                    {# Edit #}
+                    <a href="{% url 'journal:edit' pk=post.pk %}" class="btn btn-warning"><i class="material-icons">
+                        edit
+                    </i></a>
+
+
+                    <!-- Button trigger modal -->
+
+                    {# DELETE #}
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                            data-target="#Modal">
+                        <i class="material-icons">
+                            delete
+                        </i>
+                    </button>
+
+                    <div class="modal fade text-left mymodal" id="{{ char.name }}Modal" tabindex="-1" role="dialog"
+                         aria-labelledby="{{ char.name }}ModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ModalLabel">
+                                        Deleting '{{ post.title }}'</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                {# Modal text #}
+                                <div class="modal-body">
+                                    Are you sure you want to delete '{{ post.title }}' post?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <form action="{% url "journal:delete" pk=post.pk %}" method="post">
+                                        {% csrf_token %}
+
+                                        <button class="btn btn-danger">Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# Post text #}
+            <h3 class="mt-5 post-text">{{ post.text|linebreaks }}</h3>
+
+            {# Post publication date #}
+            <h3 class="mt-5 text-right date">{{ post.published_date }} (UTC)</h3>
+        </div>
+    </div>
+    </div>
+{% endblock %}
