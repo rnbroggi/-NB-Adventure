@@ -29,7 +29,7 @@ SECRET_KEY = '=5pykf3d@b(h=)je4$^i$g*0^@4fczqk%b*cd3l))n^@9i!rww'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['rnbroggi.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
